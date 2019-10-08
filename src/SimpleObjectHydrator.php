@@ -6,7 +6,7 @@ namespace Polidog\Helicon;
 
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 
-class ObjectHydrator implements Hydrator
+class SimpleObjectHydrator implements Hydrator
 {
     /**
      * @var PropertyAccessorInterface
