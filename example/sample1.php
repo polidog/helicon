@@ -4,7 +4,7 @@ declare(strict_types=1);
 require __DIR__.'/../vendor/autoload.php';
 
 use Symfony\Component\PropertyAccess\PropertyAccess;
-use Polidog\Helicon\Hydrator;
+use Polidog\Helicon\ObjectHydrator;
 
 class Foo
 {
@@ -73,7 +73,7 @@ class Foo
 }
 
 $accessor = PropertyAccess::createPropertyAccessor();
-$hydrator = new Hydrator($accessor);
+$hydrator = new ObjectHydrator($accessor);
 
 $data = [
     [
