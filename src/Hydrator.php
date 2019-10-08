@@ -6,7 +6,7 @@ namespace Polidog\Helicon;
 
 interface Hydrator
 {
-    public function hydrate(array $data, string $class): array;
+    public function hydrate(array $data, string $schema): array;
 
     public function extract(array $objectArray): array;
 }
