@@ -3,8 +3,8 @@
 declare(strict_types=1);
 require __DIR__.'/../vendor/autoload.php';
 
-use Symfony\Component\PropertyAccess\PropertyAccess;
-use Polidog\Helicon\SimpleObjectHydrator;
+use Polidog\Helicon\ObjectHydrator;
+use Zend\Hydrator\ReflectionHydrator;
 
 class Foo
 {
@@ -72,8 +72,7 @@ class Foo
     }
 }
 
-$accessor = PropertyAccess::createPropertyAccessor();
-$hydrator = new SimpleObjectHydrator($accessor);
+$hydrator = new ObjectHydrator(new ReflectionHydrator());
 
 $data = [
     [
