@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Polidog\Helicon;
 
-interface Hydrator
+interface HydratorInterface
 {
     public function hydrate(array $data, string $schema): array;
 

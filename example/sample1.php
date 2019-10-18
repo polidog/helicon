@@ -4,6 +4,9 @@ declare(strict_types=1);
 require __DIR__.'/../vendor/autoload.php';
 
 use Polidog\Helicon\ObjectHydrator;
+use Polidog\Helicon\Converter\Resolver;
+use Polidog\Helicon\Converter\ScalarTypeConverter;
+use Polidog\Helicon\SchemaFactory\ClassSchemaFactory;
 use Zend\Hydrator\ReflectionHydrator;
 
 class Foo
@@ -12,16 +15,26 @@ class Foo
      * @var string
      */
     private $name;
-
     /**
      * @var int
      */
     private $age;
-
     /**
      * @var float
      */
     private $weight;
+
+    /**
+     * @param string $name
+     * @param int    $age
+     * @param float  $weight
+     */
+    public function __construct(string $name, int $age, float $weight)
+    {
+        $this->name = $name;
+        $this->age = $age;
+        $this->weight = $weight;
+    }
 
     /**
      * @return string
@@ -29,14 +42,6 @@ class Foo
     public function getName(): string
     {
         return $this->name;
-    }
-
-    /**
-     * @param string $name
-     */
-    public function setName(string $name): void
-    {
-        $this->name = $name;
     }
 
     /**
@@ -48,31 +53,21 @@ class Foo
     }
 
     /**
-     * @param int $age
-     */
-    public function setAge(int $age): void
-    {
-        $this->age = $age;
-    }
-
-    /**
      * @return float
      */
     public function getWeight(): float
     {
         return $this->weight;
     }
-
-    /**
-     * @param float $weight
-     */
-    public function setWeight(float $weight): void
-    {
-        $this->weight = $weight;
-    }
 }
 
-$hydrator = new ObjectHydrator(new ReflectionHydrator());
+$resolver = new Resolver();
+$resolver->addConverter(new ScalarTypeConverter());
+$factory = new ClassSchemaFactory();
+$reflectionHydrator = new ReflectionHydrator();
+
+$arrayConverter = new Polidog\Helicon\ArrayConverter\Converter($resolver);
+$hydrator = new ObjectHydrator($arrayConverter, $factory, $reflectionHydrator);
 
 $data = [
     [
