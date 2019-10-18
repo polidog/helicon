@@ -3,7 +3,7 @@
 declare(strict_types=1);
 require __DIR__.'/../vendor/autoload.php';
 
-use Polidog\Helicon\ObjectHydrator;
+use Polidog\Helicon\CollectionObjectMapper;
 use Polidog\Helicon\Converter\Resolver;
 use Polidog\Helicon\Converter\ScalarTypeConverter;
 use Polidog\Helicon\SchemaFactory\ClassSchemaFactory;
@@ -67,7 +67,7 @@ $factory = new ClassSchemaFactory();
 $reflectionHydrator = new ReflectionHydrator();
 
 $arrayConverter = new Polidog\Helicon\ArrayConverter\Converter($resolver);
-$hydrator = new ObjectHydrator($arrayConverter, $factory, $reflectionHydrator);
+$mapper = new CollectionObjectMapper($arrayConverter, $factory, $reflectionHydrator);
 
 $data = [
     [
@@ -82,5 +82,5 @@ $data = [
     ],
 ];
 
-$objects = $hydrator->hydrate($data, Foo::class);
+$objects = ($mapper)($data, Foo::class);
 var_dump($objects);

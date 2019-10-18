@@ -8,7 +8,7 @@ use Polidog\Helicon\ArrayConverter\Converter;
 use Polidog\Helicon\SchemaFactory\ClassSchemaFactory;
 use Zend\Hydrator\ReflectionHydrator;
 
-class ObjectHydrator implements HydratorInterface
+class CollectionObjectMapper implements MapperInterface
 {
     /**
      * @var Converter
@@ -43,7 +43,7 @@ class ObjectHydrator implements HydratorInterface
      *
      * @return array
      */
-    public function hydrate(array $data, string $schema): array
+    public function __invoke(array $data, string $schema): array
     {
         return array_map(function (array $row) use ($schema) {
             $schemaArray = $this->schemaFactory->create($schema);
@@ -53,10 +53,5 @@ class ObjectHydrator implements HydratorInterface
                 (new \ReflectionClass($schema))->newInstanceWithoutConstructor()
             );
         }, $data);
-    }
-
-    public function extract(array $objectArray): array
-    {
-        // TODO: Implement extract() method.
     }
 }
