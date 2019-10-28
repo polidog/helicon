@@ -4,8 +4,8 @@ declare(strict_types=1);
 require __DIR__.'/../vendor/autoload.php';
 
 use Polidog\Helicon\ObjectMapper;
-use Polidog\Helicon\TypeConverter\Resolver;
-use Polidog\Helicon\TypeConverter\ScalarTypeConverter;
+use Polidog\Helicon\TypeCaster\Resolver;
+use Polidog\Helicon\TypeCaster\ScalarTypeConverter;
 use Polidog\Helicon\Schema\Factory;
 use Zend\Hydrator\ReflectionHydrator;
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Polidog\Helicon\Converter;
 
-use Polidog\Helicon\TypeConverter\Resolver;
+use Polidog\Helicon\TypeCaster\Resolver;
 
 class Converter implements ConverterInterface
 {

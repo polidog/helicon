@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Polidog\Helicon\TypeConverter;
+namespace Polidog\Helicon\TypeCaster;
 
 use PHPUnit\Framework\TestCase;
 
