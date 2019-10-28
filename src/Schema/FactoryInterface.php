@@ -1,7 +1,8 @@
 <?php
 
-namespace Polidog\Helicon\Schema;
+declare(strict_types=1);
 
+namespace Polidog\Helicon\Schema;
 
 interface FactoryInterface
 {

@@ -10,7 +10,7 @@ use Polidog\Helicon\Schema\FactoryInterface;
 use Polidog\Helicon\Schema\ObjectSchemaFactory;
 use Zend\Hydrator\ReflectionHydrator;
 
-class Mapper implements MapperInterface
+class ObjectMapper implements MapperInterface
 {
     /**
      * @var Converter
@@ -28,8 +28,8 @@ class Mapper implements MapperInterface
     private $reflectionHydrator;
 
     /**
-     * @param ConverterInterface          $converter
-     * @param FactoryInterface            $schemaFactory
+     * @param ConverterInterface $converter
+     * @param FactoryInterface   $schemaFactory
      * @param ReflectionHydrator $reflectionHydrator
      */
     public function __construct(ConverterInterface $converter, FactoryInterface $schemaFactory, ReflectionHydrator $reflectionHydrator)
