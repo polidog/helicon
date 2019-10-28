@@ -21,7 +21,7 @@ class ArrayMapper implements MapperInterface
     private $schemaFactory;
 
     /**
-     * @param Converter           $converter
+     * @param Converter        $converter
      * @param FactoryInterface $schemaFactory
      */
     public function __construct(Converter $converter, FactoryInterface $schemaFactory)

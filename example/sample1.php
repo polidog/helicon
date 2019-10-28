@@ -10,7 +10,6 @@ use Polidog\Helicon\Schema\ObjectSchemaFactory;
 use Polidog\Helicon\ArrayMapper;
 use Polidog\Helicon\Schema\JsonSchemaFileFactory;
 use Polidog\Helicon\TypeCaster\NumberTypeCaster;
-
 use Zend\Hydrator\ReflectionHydrator;
 
 class Foo
@@ -97,4 +96,3 @@ var_dump($arrays);
 // using json schema file
 $arrays2 = (new ArrayMapper($converter, new JsonSchemaFileFactory()))($data, __DIR__.'/schema.json');
 var_dump($arrays2);
-
