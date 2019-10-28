@@ -15,7 +15,7 @@ class ScalarTypeConverterTest extends TestCase
      */
     public function testSupports(string $type): void
     {
-        $converter = new ScalarTypeConverter();
+        $converter = new ScalarTypeCaster();
         $this->assertTrue($converter->supports($type));
     }
 
@@ -28,7 +28,7 @@ class ScalarTypeConverterTest extends TestCase
      */
     public function testConvert($value, string $type, $expect): void
     {
-        $converter = new ScalarTypeConverter();
+        $converter = new ScalarTypeCaster();
         $actual = $converter->convert($value, $type);
         $this->assertSame($expect, $actual);
     }

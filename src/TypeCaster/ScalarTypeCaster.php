@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Polidog\Helicon\TypeCaster;
 
-class ScalarTypeConverter implements ConverterInterface
+class ScalarTypeCaster implements TypeCasterInterface
 {
     private const SUPPORTED_TYPES = [
         'boolean',

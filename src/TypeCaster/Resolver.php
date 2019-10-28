@@ -7,16 +7,16 @@ namespace Polidog\Helicon\TypeCaster;
 class Resolver
 {
     /**
-     * @var ConverterInterface[]
+     * @var TypeCasterInterface[]
      */
     private $converters = [];
 
-    public function addConverter(ConverterInterface $converter): void
+    public function addConverter(TypeCasterInterface $converter): void
     {
         $this->converters[] = $converter;
     }
 
-    public function resolve(string $type): ConverterInterface
+    public function resolve(string $type): TypeCasterInterface
     {
         foreach ($this->converters as $converter) {
             if ($converter->supports($type)) {

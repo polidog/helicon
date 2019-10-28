@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Polidog\Helicon\TypeCaster;
 
-interface ConverterInterface
+interface TypeCasterInterface
 {
     /**
      * @param $value
