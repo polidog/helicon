@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Polidog\Helicon\SchemaFactory;
+namespace Polidog\Helicon\Schema;
 
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +10,7 @@ class ClassSchemaFactoryTest extends TestCase
 {
     public function testCreate(): void
     {
-        $factory = new ClassSchemaFactory();
+        $factory = new Factory();
         $schema = $factory->create(DummySchema::class);
         $this->assertSame([
             'id' => [
