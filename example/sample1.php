@@ -6,7 +6,7 @@ require __DIR__.'/../vendor/autoload.php';
 use Polidog\Helicon\CollectionObjectMapper;
 use Polidog\Helicon\Converter\Resolver;
 use Polidog\Helicon\Converter\ScalarTypeConverter;
-use Polidog\Helicon\SchemaFactory\ClassSchemaFactory;
+use Polidog\Helicon\Schema\Factory;
 use Zend\Hydrator\ReflectionHydrator;
 
 class Foo
@@ -63,7 +63,7 @@ class Foo
 
 $resolver = new Resolver();
 $resolver->addConverter(new ScalarTypeConverter());
-$factory = new ClassSchemaFactory();
+$factory = new Factory();
 $reflectionHydrator = new ReflectionHydrator();
 
 $arrayConverter = new Polidog\Helicon\ArrayConverter\Converter($resolver);
