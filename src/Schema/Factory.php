@@ -47,7 +47,6 @@ class Factory
             foreach ($generator->getTags() as $tag) {
                 if ($tag instanceof VarTag) {
                     $schema[$property->getName()] = [
-                        'property' => $property->getName(),
                         'type' => $tag->getTypes()[0],
                     ];
                 }

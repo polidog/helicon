@@ -23,10 +23,13 @@ class Converter implements ConverterInterface
 
     public function convert(array $row, array $schemas): array
     {
-        return array_map(function ($schema) use ($row) {
-            $value = $row[$schema['property']];
+        $results = [];
+        foreach ($row as $property => $value) {
+            $schema = $schemas[$property];
             $converter = $this->resolver->resolve($schema['type']);
-            $converter->convert($value, $schema['type']);
-        }, $schemas);
+            $results[$property] = $converter->convert($value, $schema['type']);
+        }
+
+        return $results;
     }
 }
