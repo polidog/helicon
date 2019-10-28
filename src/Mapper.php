@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace Polidog\Helicon;
 
 use Polidog\Helicon\Converter\Converter;
-use Polidog\Helicon\Schema\Factory;
+use Polidog\Helicon\Converter\ConverterInterface;
+use Polidog\Helicon\Schema\FactoryInterface;
+use Polidog\Helicon\Schema\ObjectSchemaFactory;
 use Zend\Hydrator\ReflectionHydrator;
 
-class ObjectMapper implements MapperInterface
+class Mapper implements MapperInterface
 {
     /**
      * @var Converter
@@ -16,7 +18,7 @@ class ObjectMapper implements MapperInterface
     private $converter;
 
     /**
-     * @var Factory
+     * @var ObjectSchemaFactory
      */
     private $schemaFactory;
 
@@ -26,11 +28,11 @@ class ObjectMapper implements MapperInterface
     private $reflectionHydrator;
 
     /**
-     * @param Converter          $converter
-     * @param Factory            $schemaFactory
+     * @param ConverterInterface          $converter
+     * @param FactoryInterface            $schemaFactory
      * @param ReflectionHydrator $reflectionHydrator
      */
-    public function __construct(Converter $converter, Factory $schemaFactory, ReflectionHydrator $reflectionHydrator)
+    public function __construct(ConverterInterface $converter, FactoryInterface $schemaFactory, ReflectionHydrator $reflectionHydrator)
     {
         $this->converter = $converter;
         $this->schemaFactory = $schemaFactory;

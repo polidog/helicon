@@ -3,10 +3,10 @@
 declare(strict_types=1);
 require __DIR__.'/../vendor/autoload.php';
 
-use Polidog\Helicon\ObjectMapper;
+use Polidog\Helicon\Mapper;
 use Polidog\Helicon\TypeCaster\Resolver;
 use Polidog\Helicon\TypeCaster\ScalarTypeCaster;
-use Polidog\Helicon\Schema\Factory;
+use Polidog\Helicon\Schema\ObjectSchemaFactory;
 use Zend\Hydrator\ReflectionHydrator;
 
 class Foo
@@ -63,11 +63,11 @@ class Foo
 
 $resolver = new Resolver();
 $resolver->addConverter(new ScalarTypeCaster());
-$factory = new Factory();
+$factory = new ObjectSchemaFactory();
 $reflectionHydrator = new ReflectionHydrator();
 
 $arrayConverter = new Polidog\Helicon\Converter\Converter($resolver);
-$mapper = new ObjectMapper($arrayConverter, $factory, $reflectionHydrator);
+$mapper = new Mapper($arrayConverter, $factory, $reflectionHydrator);
 
 $data = [
     [

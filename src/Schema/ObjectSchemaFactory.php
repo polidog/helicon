@@ -9,7 +9,7 @@ use Zend\Code\Generator\DocBlock\Tag\VarTag;
 use Zend\Code\Generator\DocBlockGenerator;
 use Zend\Code\Reflection\DocBlockReflection;
 
-class Factory
+class ObjectSchemaFactory implements FactoryInterface
 {
     /**
      * @var CacheInterface
@@ -25,20 +25,20 @@ class Factory
     }
 
     /**
-     * @param string $className
+     * @param string $schemaName
      *
      * @return array
      *
      * @throws \ReflectionException
      */
-    public function create(string $className): array
+    public function create(string $schemaName): array
     {
-        $cached = $this->readCache($className);
+        $cached = $this->readCache($schemaName);
         if (null !== $cached) {
             return $cached;
         }
 
-        $refClass = new \ReflectionClass($className);
+        $refClass = new \ReflectionClass($schemaName);
         $schema = [];
         foreach ($refClass->getProperties() as $property) {
             $comment = $property->getDocComment();
@@ -53,7 +53,7 @@ class Factory
             }
         }
 
-        $this->saveCache($className, $schema);
+        $this->saveCache($schemaName, $schema);
 
         return $schema;
     }

@@ -10,7 +10,7 @@ class ClassSchemaFactoryTest extends TestCase
 {
     public function testCreate(): void
     {
-        $factory = new Factory();
+        $factory = new ObjectSchemaFactory();
         $schema = $factory->create(DummySchema::class);
         $this->assertSame([
             'id' => [
