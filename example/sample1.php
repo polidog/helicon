@@ -3,7 +3,7 @@
 declare(strict_types=1);
 require __DIR__.'/../vendor/autoload.php';
 
-use Polidog\Helicon\CollectionObjectMapper;
+use Polidog\Helicon\Mapper;
 use Polidog\Helicon\Converter\Resolver;
 use Polidog\Helicon\Converter\ScalarTypeConverter;
 use Polidog\Helicon\Schema\Factory;
@@ -67,7 +67,7 @@ $factory = new Factory();
 $reflectionHydrator = new ReflectionHydrator();
 
 $arrayConverter = new Polidog\Helicon\ArrayConverter\Converter($resolver);
-$mapper = new CollectionObjectMapper($arrayConverter, $factory, $reflectionHydrator);
+$mapper = new Mapper($arrayConverter, $factory, $reflectionHydrator);
 
 $data = [
     [

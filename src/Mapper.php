@@ -8,7 +8,7 @@ use Polidog\Helicon\ArrayConverter\Converter;
 use Polidog\Helicon\Schema\Factory;
 use Zend\Hydrator\ReflectionHydrator;
 
-class CollectionObjectMapper implements MapperInterface
+class Mapper implements MapperInterface
 {
     /**
      * @var Converter
