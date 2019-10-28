@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Polidog\Helicon\ArrayConverter;
+namespace Polidog\Helicon\Converter;
 
-use Polidog\Helicon\Converter\Resolver;
+use Polidog\Helicon\TypeConverter\Resolver;
 
 class Converter implements ConverterInterface
 {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Polidog\Helicon;
 
-use Polidog\Helicon\ArrayConverter\Converter;
+use Polidog\Helicon\Converter\Converter;
 use Polidog\Helicon\Schema\Factory;
 use Zend\Hydrator\ReflectionHydrator;
 

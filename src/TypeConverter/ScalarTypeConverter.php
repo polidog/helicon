@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Polidog\Helicon\Converter;
+namespace Polidog\Helicon\TypeConverter;
 
 class ScalarTypeConverter implements ConverterInterface
 {

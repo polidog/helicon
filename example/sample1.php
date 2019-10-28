@@ -4,8 +4,8 @@ declare(strict_types=1);
 require __DIR__.'/../vendor/autoload.php';
 
 use Polidog\Helicon\Mapper;
-use Polidog\Helicon\Converter\Resolver;
-use Polidog\Helicon\Converter\ScalarTypeConverter;
+use Polidog\Helicon\TypeConverter\Resolver;
+use Polidog\Helicon\TypeConverter\ScalarTypeConverter;
 use Polidog\Helicon\Schema\Factory;
 use Zend\Hydrator\ReflectionHydrator;
 
@@ -66,7 +66,7 @@ $resolver->addConverter(new ScalarTypeConverter());
 $factory = new Factory();
 $reflectionHydrator = new ReflectionHydrator();
 
-$arrayConverter = new Polidog\Helicon\ArrayConverter\Converter($resolver);
+$arrayConverter = new Polidog\Helicon\Converter\Converter($resolver);
 $mapper = new Mapper($arrayConverter, $factory, $reflectionHydrator);
 
 $data = [
