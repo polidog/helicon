@@ -8,12 +8,12 @@ use Polidog\Helicon\Converter\Converter;
 use Polidog\Helicon\Schema\Factory;
 use Zend\Hydrator\ReflectionHydrator;
 
-class Mapper implements MapperInterface
+class ObjectMapper implements MapperInterface
 {
     /**
      * @var Converter
      */
-    private $arrayConverter;
+    private $converter;
 
     /**
      * @var Factory
@@ -26,13 +26,13 @@ class Mapper implements MapperInterface
     private $reflectionHydrator;
 
     /**
-     * @param Converter          $arrayConverter
+     * @param Converter          $converter
      * @param Factory            $schemaFactory
      * @param ReflectionHydrator $reflectionHydrator
      */
-    public function __construct(Converter $arrayConverter, Factory $schemaFactory, ReflectionHydrator $reflectionHydrator)
+    public function __construct(Converter $converter, Factory $schemaFactory, ReflectionHydrator $reflectionHydrator)
     {
-        $this->arrayConverter = $arrayConverter;
+        $this->converter = $converter;
         $this->schemaFactory = $schemaFactory;
         $this->reflectionHydrator = $reflectionHydrator;
     }
@@ -49,7 +49,7 @@ class Mapper implements MapperInterface
             $schemaArray = $this->schemaFactory->create($schema);
 
             return $this->reflectionHydrator->hydrate(
-                $this->arrayConverter->convert($row, $schemaArray),
+                $this->converter->convert($row, $schemaArray),
                 (new \ReflectionClass($schema))->newInstanceWithoutConstructor()
             );
         }, $data);

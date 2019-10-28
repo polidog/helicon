@@ -21,13 +21,12 @@ class Converter implements ConverterInterface
         $this->resolver = $resolver;
     }
 
-    public function convert(array $rows, array $schema): array
+    public function convert(array $row, array $schemas): array
     {
-        foreach ($rows as $key => $value) {
-            $converter = $this->resolver->resolve($schema[$key]['type']);
-            $rows[$key] = $converter->convert($value, $schema[$key]['type']);
-        }
-
-        return $rows;
+        return array_map(function ($schema) use ($row) {
+            $value = $row[$schema['property']];
+            $converter = $this->resolver->resolve($schema['type']);
+            $converter->convert($value, $schema['type']);
+        }, $schemas);
     }
 }
