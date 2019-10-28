@@ -8,6 +8,9 @@ use Polidog\Helicon\TypeCaster\Resolver;
 use Polidog\Helicon\TypeCaster\ScalarTypeCaster;
 use Polidog\Helicon\Schema\ObjectSchemaFactory;
 use Polidog\Helicon\ArrayMapper;
+use Polidog\Helicon\Schema\JsonSchemaFileFactory;
+use Polidog\Helicon\TypeCaster\NumberTypeCaster;
+
 use Zend\Hydrator\ReflectionHydrator;
 
 class Foo
@@ -64,11 +67,12 @@ class Foo
 
 $resolver = new Resolver();
 $resolver->addConverter(new ScalarTypeCaster());
+$resolver->addConverter(new NumberTypeCaster());
+
 $factory = new ObjectSchemaFactory();
 $reflectionHydrator = new ReflectionHydrator();
 
 $converter = new Polidog\Helicon\Converter\Converter($resolver);
-$mapper = new ObjectMapper($converter, $factory, $reflectionHydrator);
 
 $data = [
     [
@@ -83,10 +87,14 @@ $data = [
     ],
 ];
 
-$objects = ($mapper)($data, Foo::class);
+$objects = (new ObjectMapper($converter, $factory, $reflectionHydrator))($data, Foo::class);
 var_dump($objects);
 
 // array mapper
-$arrayMapper = new ArrayMapper($converter, $factory);
-$arrays = ($arrayMapper)($data, Foo::class);
+$arrays = (new ArrayMapper($converter, $factory))($data, Foo::class);
 var_dump($arrays);
+
+// using json schema file
+$arrays2 = (new ArrayMapper($converter, new JsonSchemaFileFactory()))($data, __DIR__.'/schema.json');
+var_dump($arrays2);
+

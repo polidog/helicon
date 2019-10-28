@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Polidog\Helicon;
 
 use Polidog\Helicon\Converter\Converter;
+use Polidog\Helicon\Schema\FactoryInterface;
 use Polidog\Helicon\Schema\ObjectSchemaFactory;
 
 class ArrayMapper implements MapperInterface
@@ -21,9 +22,9 @@ class ArrayMapper implements MapperInterface
 
     /**
      * @param Converter           $converter
-     * @param ObjectSchemaFactory $schemaFactory
+     * @param FactoryInterface $schemaFactory
      */
-    public function __construct(Converter $converter, ObjectSchemaFactory $schemaFactory)
+    public function __construct(Converter $converter, FactoryInterface $schemaFactory)
     {
         $this->converter = $converter;
         $this->schemaFactory = $schemaFactory;
