@@ -64,16 +64,18 @@ class Factory
             return null;
         }
 
-        $key = 'felicon_'.sha1($className);
-
-        return $this->cache->get($key);
+        return $this->cache->get($this->cacheKey($className));
     }
 
     private function saveCache(string $className, array $schema)
     {
         if (null !== $this->cache) {
-            $key = 'helicon_'.sha1($className);
-            $this->cache->set($key, $schema);
+            $this->cache->set($this->cacheKey($className), $schema);
         }
+    }
+
+    private function cacheKey(string $className)
+    {
+        return 'helicon_'.sha1($className);
     }
 }
