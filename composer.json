@@ -22,8 +22,6 @@
     "require": {
         "php": "~7.1",
         "zendframework/zend-hydrator": "^3.0",
-        "symfony/serializer": "^4.3",
-        "symfony/property-access": "^4.3",
         "zendframework/zend-code": "^3.4",
         "psr/simple-cache": "^1.0"
     },
