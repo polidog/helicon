@@ -6,7 +6,7 @@ namespace Polidog\Helicon\Schema;
 
 use PHPUnit\Framework\TestCase;
 
-class ClassSchemaFactoryTest extends TestCase
+class ObjectSchemaFactoryTest extends TestCase
 {
     public function testCreate(): void
     {
