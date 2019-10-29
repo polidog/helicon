@@ -33,6 +33,10 @@ class ObjectSchemaFactory implements FactoryInterface
      */
     public function __invoke(string $schemaName): array
     {
+        if (false === class_exists($schemaName)) {
+            throw new SchemaException('class not found, '.$schemaName);
+        }
+
         $cached = $this->readCache($schemaName);
         if (null !== $cached) {
             return $cached;

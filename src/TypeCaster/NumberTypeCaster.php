@@ -13,7 +13,7 @@ class NumberTypeCaster implements TypeCasterInterface
         }
 
         if (!\is_string($value)) {
-            throw new \RuntimeException('Unsupported type ');
+            throw new TypeCasterException('Unsupported type ');
         }
 
         if (preg_match('/^(\d+)$/', $value, $matches)) {

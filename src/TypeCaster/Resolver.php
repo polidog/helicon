@@ -24,6 +24,6 @@ class Resolver
             }
         }
 
-        throw new \RuntimeException('converter not supported '.$type); // TODO custom exception.
+        throw new TypeCasterException('converter not supported '.$type); // TODO custom exception.
     }
 }
