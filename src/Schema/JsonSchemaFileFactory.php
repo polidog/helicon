@@ -6,7 +6,7 @@ namespace Polidog\Helicon\Schema;
 
 class JsonSchemaFileFactory implements FactoryInterface
 {
-    public function create(string $schemaName): array
+    public function __invoke(string $schemaName): array
     {
         if (false === file_exists($schemaName)) {
             throw new \RuntimeException('json schema not found. name = '.$schemaName);

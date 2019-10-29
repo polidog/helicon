@@ -21,7 +21,7 @@ class Converter implements ConverterInterface
         $this->resolver = $resolver;
     }
 
-    public function convert(array $row, array $schemas): array
+    public function __invoke(array $row, array $schemas): array
     {
         $results = [];
         foreach ($row as $property => $value) {

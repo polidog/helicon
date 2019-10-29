@@ -31,7 +31,7 @@ class ObjectSchemaFactory implements FactoryInterface
      *
      * @throws \ReflectionException
      */
-    public function create(string $schemaName): array
+    public function __invoke(string $schemaName): array
     {
         $cached = $this->readCache($schemaName);
         if (null !== $cached) {

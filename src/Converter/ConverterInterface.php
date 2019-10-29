@@ -6,5 +6,5 @@ namespace Polidog\Helicon\Converter;
 
 interface ConverterInterface
 {
-    public function convert(array $row, array $schemas): array;
+    public function __invoke(array $row, array $schemas): array;
 }

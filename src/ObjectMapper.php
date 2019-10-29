@@ -48,10 +48,8 @@ class ObjectMapper implements MapperInterface
     public function __invoke(array $data, string $schema): array
     {
         return array_map(function (array $row) use ($schema) {
-            $schemaArray = $this->schemaFactory->create($schema);
-
             return $this->reflectionHydrator->hydrate(
-                $this->converter->convert($row, $schemaArray),
+                ($this->converter)($row, ($this->schemaFactory)($schema)),
                 (new \ReflectionClass($schema))->newInstanceWithoutConstructor()
             );
         }, $data);

@@ -11,7 +11,7 @@ class ClassSchemaFactoryTest extends TestCase
     public function testCreate(): void
     {
         $factory = new ObjectSchemaFactory();
-        $schema = $factory->create(DummySchema::class);
+        $schema = $factory->__invoke(DummySchema::class);
         $this->assertSame([
             'id' => [
                 'type' => 'int',

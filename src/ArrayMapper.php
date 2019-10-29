@@ -33,9 +33,7 @@ class ArrayMapper implements MapperInterface
     public function __invoke(array $data, string $schema): array
     {
         return array_map(function (array $row) use ($schema) {
-            $schemaArray = $this->schemaFactory->create($schema);
-
-            return $this->converter->convert($row, $schemaArray);
+            return ($this->converter)($row, ($this->schemaFactory)($schema));
         }, $data);
     }
 }
